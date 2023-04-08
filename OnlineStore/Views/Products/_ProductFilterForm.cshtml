@@ -1,0 +1,31 @@
+﻿@model OnlineStore.BLL.ViewModels.Products.FilterViewModel
+
+<form id="productsFilterForm">
+    <div class="form-group">
+        <button id="clearFilterBtn" class="btn btn-dark">Clear</button>
+    </div>
+    <div class="form-group">
+        <label asp-for="Price">Price: </label>
+        <input id="priceFilter" class="input-group-text" asp-for="Price" />
+    </div>
+    <div id="categoryContainer" class="form-group">
+        <label asp-for="Category">Category: </label>
+        <select id="categoryFilter" asp-for="Category">
+            <option value="All">All</option>
+            <option value="Smartphone">Smartphone</option>
+            <option value="Laptop">Laptop</option>
+            <option value="Monoblock">Monoblock</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="Name">Name: </label>
+        <input id="nameFilter" class="input-group-text" type="text" asp-for="Name" />
+    </div>
+    <div id="availabilityContainer" class="form-group">
+        <label asp-for="Availability">In stock: </label>
+        <input id="availabilityFilter" type="checkbox" asp-for="Availability" />
+    </div>
+    <div class="form-group">
+        <button id="productsFilterBtn" class="btn btn-dark">Apply</button>
+    </div>
+</form>

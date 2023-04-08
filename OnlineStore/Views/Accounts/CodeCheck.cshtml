@@ -1,0 +1,29 @@
+﻿@model OnlineStore.BLL.ViewModels.Account.CodeCheckViewModel
+
+<div id="codeCheckContainer">
+    <h2>Password Renewal</h2>
+    <p>Email with a verification code has been sent to your E-Mail Address</p>
+    <form id="codeCheckForm" asp-action="CodeCheck">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input asp-for="Id" type="hidden" value="@Model.Id" />
+        <input asp-for="Code" type="hidden" value="@Model.Code" />
+        <div class="form-group">
+            <label asp-for="CodeConfirm" class="control-label">Confirmation Code</label>
+            <input asp-for="CodeConfirm" class="form-control" />
+            <span asp-validation-for="CodeConfirm" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input id="codeCheckBtn" type="submit" value="Submit" class="btn btn-dark" />
+        </div>
+    </form>
+
+    <div id="actionsBlock">
+        <a id="backToLogInBtn" class="btn btn-dark" asp-action="LogIn">Back to Log In page</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

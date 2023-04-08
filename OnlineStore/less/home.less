@@ -1,0 +1,87 @@
+﻿@import "Variables.less";
+
+#sliderContainer {
+    width: fit-content;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+    margin-top: 20px;
+
+    .slider-button {
+        width: 40px;
+        height: 40px;
+        background-size: contain;
+        background-color: transparent;
+        transition: @transition;
+
+        &:hover {
+            filter: invert(56%) sepia(13%) saturate(1528%) hue-rotate(89deg) brightness(92%) contrast(85%);
+        }
+
+        &:first-child {
+            background-image: url("../wwwroot/images/arrow-left.svg");
+        }
+
+        &:last-child {
+            background-image: url("../wwwroot/images/arrow-right.svg");
+        }
+
+        &:disabled {
+            pointer-events: none;
+            filter: invert(77%) sepia(5%) saturate(2%) hue-rotate(314deg) brightness(97%) contrast(92%);
+        }
+    }
+}
+
+#inner-conteiner {
+    width: 250px;
+    height: 390px;
+    position: relative;
+    overflow: hidden;
+}
+
+#cards {
+    display: flex;
+    column-gap: 50px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: 0.5s;
+}
+
+.slider-card {
+    width: 250px;
+    height: 390px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid @background-container-color;
+    border-radius: 10px;
+
+    img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .category,
+    .price {
+        margin-bottom: 10px;
+    }
+
+    button {
+        transition: @transition;
+
+        &:hover {
+            color: @link-hover;
+        }
+    }
+}
+
+#activationMessage {
+    text-align: center;
+    color: @link-hover;
+    background-color: @background-container-color;
+    margin: 0;
+}

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<OnlineStore.DAL.Models.Product>
+
+@if (Model.Count() == 0)
+{
+    <h3 id="productNotFoundMsg">Sorry but roducts not found...</h3>
+}
+@foreach (var item in Model)
+{
+    <div class="productCard">
+        <div class="topPart">
+            <img src="data:image/png;base64,@(Convert.ToBase64String(item.Image))" alt="Product image" />
+            @if (User.IsInRole("Admin"))
+            {
+                <div class="topPart__buttons">
+                    <button type="button" class="btn-close deleteProductBtn" value="@item.Id" aria-label="Delete"></button>
+                    <button class="getEditPopupBtn" type="button" value="@item.Id" aria-label="Edit"></button>
+                </div>
+            }
+        </div>
+        <h4 class="name"><b>@item.Name</b></h4>
+        <p class="category">Categoty: <b>@item.Category</b></p>
+        <p class="price">Price: <b>@item.Price BYN</b></p>
+        <div>
+            <button type="button" class="btn btn-dark viewProductBtn" onclick="location.href='@Url.Action("ProductPage", new {Id = item.Id})'">View</button>
+            @if (item.Info?.Amount == 0)
+            {
+                <button type="button" class="btn btn-dark" disabled>Add to Cart</button>
+            }
+            else
+            {
+                <button type="button" class="btn btn-dark addProductToCartBtn" value="@item.Id">Add to Cart</button>
+            }
+        </div>
+    </div>
+}

@@ -1,0 +1,123 @@
+﻿@import "Variables.less";
+
+#bannerContainer {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    cursor: pointer;
+    border-left: 2px solid @background-container-color;
+    border-right: 2px solid @background-container-color;
+    border-bottom: 2px solid @background-container-color;
+    transition: @transition;
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+
+    &:hover {
+        border-left: 2px solid @link-hover;
+        border-right: 2px solid @link-hover;
+        border-bottom: 2px solid @link-hover;
+    }
+
+    #openeditBannerFromBtn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 30px;
+        height: 30px;
+        background-image: url("../wwwroot/images/edit.svg");
+        background-size: contain;
+        background-color: transparent;
+        transition: @transition;
+
+        &:hover {
+            filter: invert(56%) sepia(13%) saturate(1528%) hue-rotate(89deg) brightness(92%) contrast(85%);
+        }
+    }
+}
+
+#editBannersContainer {
+    label {
+        margin-bottom: 5px;
+    }
+
+    .editBannersContainer__item {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 20px;
+        border-bottom: 1px solid @background-color;
+
+        img {
+            width: 350px;
+            height: 130px;
+            margin-bottom: 15px;
+        }
+    }
+
+    #createBannerContainer {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+        border-bottom: 1px solid @background-color;
+        padding-bottom: 20px;
+    }
+
+    #cancelCreateBannerBtn,
+    #createBannerFormBtn {
+        transition: @transition;
+
+        &:hover{
+            color: @link-hover;
+        }
+    }
+
+    #createBannerForm {
+        display: flex;
+        flex-direction: column;
+
+        #createBannerBtn {
+            align-self: center;
+            margin-top: 15px;
+            transition: @transition;
+
+            &:hover {
+                color: @link-hover;
+            }
+        }
+    }
+
+    .editBannerForm {
+        display: flex;
+        align-items: center;
+        column-gap: 50px;
+    }
+
+    .image-container,
+    .form-groups {
+        display: flex;
+        flex-direction: column;
+        row-gap: 15px;
+    }
+
+    .buttons-container {
+        display: flex;
+        flex-direction: column;
+        row-gap: 15px;
+
+        button {
+            width: 100px;
+            transition: @transition;
+
+            &:hover {
+                color: @link-hover;
+            }
+        }
+    }
+
+    .modal-footer {
+        border-top: 0;
+    }
+}

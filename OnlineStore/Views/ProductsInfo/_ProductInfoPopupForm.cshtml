@@ -1,0 +1,52 @@
+﻿@model OnlineStore.BLL.ViewModels.Products.CreateProductInfoViewModel
+
+<form id="newProductInfoForm" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input id="productCreationId" type="hidden" asp-for="ProductId" />
+    <div class="form-group">
+        <label asp-for="Material" class="control-label"></label>
+        <input id="productMaterial" asp-for="Material" class="form-control" />
+        <span asp-validation-for="Material" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Color" class="control-label"></label>
+        <input id="productColor" asp-for="Color" class="form-control" />
+        <span asp-validation-for="Color" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Memory" class="control-label"></label>
+        <input id="productMemory" asp-for="Memory" class="form-control" placeholder="Example: 128 GB/1 TB" />
+        <span asp-validation-for="Memory" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Amount" class="control-label"></label>
+        <input id="productAmount" asp-for="Amount" class="form-control" />
+        <span asp-validation-for="Amount" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CreationDate" class="control-label"></label>
+        <input id="productCreationDate" asp-for="CreationDate" class="form-control" />
+        <span asp-validation-for="CreationDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="LifeTime" class="control-label">Life Time in Years</label>
+        <input id="productLifeTime" asp-for="LifeTime" class="form-control" />
+        <span asp-validation-for="LifeTime" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Rating" class="control-label"></label>
+        <input id="productRating" asp-for="Rating" class="form-control" placeholder="Example: 8,8" />
+        <span asp-validation-for="Rating" class="text-danger"></span>
+    </div>
+    <div class="modal-footer">
+        <button id="closeModalBtn" type="button" class="btn btn-dark">Close</button>
+        <button id="openPrevFormBtn" class="btn btn-dark">Back</button>
+        <button id="createProductInfoBtn" class="btn btn-dark">Create</button>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

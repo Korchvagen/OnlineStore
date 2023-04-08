@@ -1,0 +1,11 @@
+﻿@model OnlineStore.BLL.ViewModels.Cart.PaymentProofViewModel
+
+<div id="paymentProofContainer">
+    <p>A payment confirmation code has been sent to your email</p>
+    <p id="timer">2:00</p>
+    <form id="paymentProofForm">
+        <input type="hidden" id="confirmationCode" value="@ViewBag.ConfirmationCode" />
+        <input type="text" id="code" class="form-control" />
+        <button id="confirmPaymentBtn" type="button" class="btn btn-dark">Pay</button>
+    </form>
+</div>

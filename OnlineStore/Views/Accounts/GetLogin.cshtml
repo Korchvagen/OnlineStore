@@ -1,0 +1,27 @@
+﻿@model OnlineStore.BLL.ViewModels.Account.GetLoginViewModel
+
+<div id="getLogInContainer">
+    <h2>Password Renewal</h2>
+    <p>Please enter your account Email</p>
+    <form id="getLogInFrom" asp-action="GetLogin">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Login" class="control-label"></label>
+            <input asp-for="Login" class="form-control" />
+            <span asp-validation-for="Login" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input id="getLogInBtn" type="submit" value="Submit" class="btn btn-dark" />
+        </div>
+    </form>
+
+    <div id="actionsBlock">
+        <a id="backToLogInBtn" class="btn btn-dark" asp-action="LogIn">Back to Log In page</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,21 @@
+﻿@model OnlineStore.DAL.Models.Product
+
+<div id="productPageContainer">
+    <div id="productPageActions">
+        <a id="backLink" asp-controller="Products" asp-action="Index">
+            <img src="@Url.Content("~/images/back.svg")" />
+            <span>To catalog</span>
+        </a>
+        @if (User.IsInRole("Admin"))
+        {
+            <div id="productPageBtns">
+                <button id="openModalBtn" class="btn btn-dark">Create new product</button>
+                <button type="button" class="btn btn-dark getEditPopupBtn" value="@Model.Id">Edit product</button>
+                <button type="button" class="btn btn-dark deleteProductBtn" value="@Model.Id">Delete product</button>
+            </div>
+        }
+    </div>
+    <div id="productPageInfo">
+        @Html.Partial("_ProductPagePartialView", Model)
+    </div>
+</div>

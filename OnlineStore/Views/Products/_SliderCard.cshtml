@@ -1,0 +1,21 @@
+﻿@model OnlineStore.DAL.Models.Product
+
+<div class="slider-card shown">
+    <input type="hidden" class="id" value="@Model.Id" />
+    <img src="data:image/png;base64,@(Convert.ToBase64String(Model.Image))" />
+    <h4 class="name">@Model.Name</h4>
+    <p class="category">Category: <b>@Model.Category</b></p>
+    <p class="price">Price: <b>@Model.Price BYN</b></p>
+    <p class="rating">Rating: <b>@Model.Info?.Rating</b></p>
+    <div>
+        <button type="button" class="btn btn-dark" onclick="location.href='@Url.Action("ProductPage", "Products", new {Id = Model.Id})'">View</button>
+        @if (Model.Info?.Amount == 0)
+        {
+            <button type="button" class="btn btn-dark" disabled>Add to Cart</button>
+        }
+        else
+        {
+            <button type="button" class="btn btn-dark addProductToCartBtn" value="@Model.Id">Add to Cart</button>
+        }
+    </div>
+</div>

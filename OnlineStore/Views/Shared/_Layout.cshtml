@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TeslaStore</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="~/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/Style.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/kendo-ui/styles/kendo.common.min.css" />
+    <link rel="stylesheet" href="~/lib/kendo-ui/styles/kendo.default.min.css" />
+</head>
+<body>
+    <header class="header">
+        <div class="header__container">
+            <a class="logo" asp-controller="Home" asp-action="Index">
+                <div class="logo__image"></div>
+                <h1 class="logo__title">TeslaStore</h1>
+            </a>
+            <a class="login-container" asp-area="" asp-controller="Accounts" asp-action="LogIn">
+                <img class="login-container__icon" src="@Url.Content("~/images/login.svg")" />
+                <span class="login-container__user">@User.Identity.Name</span>
+            </a>
+            <div class="menu">
+                <span></span>
+                <nav class="menu__content">
+                    <ul class="menu__content__list">
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="list-item">
+                                <a href ="@Url.ActionLink("Index", "Accounts")">
+                                    <img class="list-item__img" src="@Url.Content("~/images/users.svg")" />
+                                    <p class="list-item__text">Users</p>
+                                </a>
+                            </li>
+                        }
+                        <li class="list-item">
+                            <a href="@Url.ActionLink("Index", "Products")">
+                                <img class="list-item__img" src="@Url.Content("~/images/catalog.svg")" />
+                                <p class="list-item__text">Catalog</p>
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a href="@Url.ActionLink("OpenCart", "Accounts")">
+                                <img class="list-item__img" src="@Url.Content("~/images/cart.svg")" />
+                                <p class="list-item__text">My cart</p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="footer__container">
+            <ul class="contact-list">
+                <li>E-mail: <a class="contact-list__link" href="mailto:korchikov_k@mail.ru">korchikov_k@mail.ru</a></li>
+                <li>Tel: <a class="contact-list__link" href="tel:80292172375">+375(29)217-23-75</a></li>
+                <li>Telegram: <a class="contact-list__link" href="https://t.me/Kor4vagen" target="_blank">@@Kor4vagen</a></li>
+                <li>LinkedIn: <a class="contact-list__link" href="https://www.linkedin.com/in/konstantin-korchikov-43a156242" target="_blank">@@Konstantin Korchikov</a></li>
+            </ul>
+            <div>
+                <span class="year">2023</span>
+                <span>Powered by <a class="developer-link" href="https://www.st.by/" target="_blank">System Technologies</a></span>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal fade" id="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="modalTitle"></h3>
+                    <button id="closeModalBtn" type="button" class="btn-close" aria-label="Close"></button>
+                </div>
+                <div class="modal-body"></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/kendo-ui/js/kendo.all.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="~/js/products/createProduct.js"></script>
+    <script type="module" src="~/js/products/editProduct.js"></script>
+    <script type="module" src="~/js/products/deleteProduct.js"></script>
+    <script type="module" src="~/js/products/productsFilter.js"></script>
+    <script type="module" src="~/js/cart/productCart.js"></script>
+    <script type="module" src="~/js/cart/paymentProof.js"></script>
+    <script type="module" src="~/js/accounts/changeUserRole.js"></script>
+    <script type="module" src="~/js/home/productSlider.js"></script>
+    <script type="module" src="~/js/home/homePage.js"></script>
+    <script type="module" src="~/js/banner/createBanner.js"></script>
+    <script type="module" src="~/js/banner/editBanner.js"></script>
+    <script type="module" src="~/js/banner/deleteBanner.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

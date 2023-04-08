@@ -1,0 +1,136 @@
+﻿@import "Variables.less";
+
+#noOrdersContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 100px;
+
+    button {
+        transition: @transition;
+
+        &:hover {
+            color: @link-hover;
+        }
+    }
+}
+
+.orderContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    img {
+        width: 200px;
+        height: 200px;
+    }
+
+    ul {
+        column-count: 2;
+        column-gap: 50px;
+    }
+}
+
+.amountContainer {
+    text-align: center;
+
+    p {
+        margin-bottom: 5px;
+    }
+}
+
+.amountContainer__buttons {
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+
+    button {
+        width: 20px;
+        height: 20px;
+        background-color: transparent;
+        background-size: contain;
+        transition: @transition;
+
+        &:hover {
+            filter: invert(60%) sepia(20%) saturate(1063%) hue-rotate(89deg) brightness(85%) contrast(81%);
+        }
+    }
+}
+
+.decreaseAmountBtn {
+    background-image: url("../wwwroot/images/minus.svg");
+}
+
+.increaseAmountBtn {
+    background-image: url("../wwwroot/images/plus.svg");
+}
+
+.amountInput {
+    width: 40px;
+    border: 1px black solid;
+    border-radius: 2px;
+    padding-left: 5px;
+}
+
+.totalPriceContainer {
+    text-align: center;
+
+    p {
+        margin: 0;
+
+        &:first-child {
+            margin-bottom: 5px;
+        }
+    }
+}
+
+.deleteProductFromCartBtn {
+    transition: @transition;
+
+    &:hover {
+        filter: invert(60%) sepia(20%) saturate(1063%) hue-rotate(89deg) brightness(85%) contrast(81%);
+    }
+}
+
+#billContainer {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding-right: 50px;
+
+    div {
+        margin-right: 30px;
+
+        p {
+            margin: 0;
+        }
+    }
+}
+
+#getPaymentPartialViewBtn {
+    transition: @transition;
+
+    &:hover {
+        color: @link-hover;
+    }
+}
+
+#paymentProofContainer,
+#paymentProofForm {
+    text-align: center;
+
+    p {
+        font-size: 20px;
+    }
+}
+
+#confirmPaymentBtn{
+    width: 100px;
+    margin-top: 20px;
+    transition: @transition;
+
+    &:hover{
+        color: @link-hover;
+    }
+}

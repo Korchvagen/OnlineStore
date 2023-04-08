@@ -1,0 +1,15 @@
+﻿@model OnlineStore.BLL.ViewModels.Products.CatalogViewModel
+
+<div id="catalogContainer">
+    <h2>Catalog</h2>
+    <div id="optionsBlock">
+        @if (User.IsInRole("Admin"))
+        {
+            <button id="openModalBtn" class="btn btn-dark">Create new product</button>
+        }
+        @Html.Partial("_ProductFilterForm", Model.Filter)
+    </div>
+    <div id="cardsContainer">
+        @Html.Partial("_Cards", Model.Products)
+    </div>
+</div>

@@ -1,0 +1,28 @@
+﻿@model OnlineStore.DAL.Models.Product
+
+<div>
+    <img src="data:image/png;base64,@(Convert.ToBase64String(Model.Image))" />
+</div>
+<div>
+    <h2 id="productName"><b>@Model.Name</b></h2>
+    <h3>Characteristics</h3>
+    <ul>
+        <li>Price: <b>@Model.Price BYN</b></li>
+        <li>Category: <b>@Model.Category</b></li>
+        <li>Rating: <b>@Model.Info?.Rating</b></li>
+        <li>Memory: <b>@Model.Info?.Memory</b></li>
+        <li>Color: <b>@Model.Info?.Color</b></li>
+        <li>In stock: <b>@Model.Info?.Amount</b></li>
+        <li>Creation Date: <b>@Model.Info?.CreationDate.ToShortDateString()</b></li>
+        <li>Material: <b>@Model.Info?.Material</b></li>
+        <li>Life Time: <b>@Model.Info?.LifeTime Years</b></li>
+    </ul>
+    @if (Model.Info?.Amount == 0)
+    {
+        <button type="button" class="btn btn-dark" disabled>Add to Cart</button>
+    }
+    else
+    {
+        <button type="button" class="btn btn-dark addProductToCartBtn" value="@Model.Id">Add to Cart</button>
+    }
+</div>

@@ -1,0 +1,45 @@
+﻿@model OnlineStore.BLL.ViewModels.Products.CreateProductViewModel
+
+<form id="editProductForm" method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="FileName" />
+    <input type="hidden" asp-for="PrevImage" />
+    <div class="form-group">
+        <label asp-for="Name" class="control-label"></label>
+        <input id="productName" asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Category" class="control-label"></label>
+        <select id="productCategory" asp-for="Category" class="form-control">
+            <option value="Smartphone">Smartphone</option>
+            <option value="Laptop">Laptop</option>
+            <option value="Monoblock">Monoblock</option>
+        </select>
+        <span asp-validation-for="Category" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Price" class="control-label">Price BYN</label>
+        <input id="productPrice" asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Image" class="control-label">If you want you can change image</label>
+        <input name="Image" id="productImage" type="file" asp-for="Image" class="form-control" />
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
+    <div id="prevInfoContainer" class="form-group">
+        <p>Previously selected file:<br /><b>@Model.FileName</b></p>
+        <img src="data:image/png;base64,@(Convert.ToBase64String(Model.PrevImage))" />
+    </div>
+    <div class="modal-footer">
+        <button id="editProductBtn" class="btn btn-dark">Save</button>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,54 @@
+﻿@model List<OnlineStore.DAL.Models.Order>
+
+<div id="cart">
+    @if (Model.Count() == 0)
+    {
+        <div id="noOrdersContainer">
+            <h3>You have no added products</h3>
+            <button type="button" class="btn btn-dark" onclick="location.href='@Url.ActionLink("Index", "Products")'">Let's go shopping</button>
+        </div>
+    }
+    else
+    {
+        @foreach (var order in Model)
+        {
+            <div class="orderContainer">
+                <img src="data:image/png;base64,@(Convert.ToBase64String(order.Product.Image))" />
+                <div>
+                    <h3>@order.Product.Name</h3>
+                    <ul>
+                        <li>Category: @order.Product.Category</li>
+                        <li>Material: @order.Product.Info?.Material</li>
+                        <li>Color: @order.Product.Info?.Color</li>
+                        <li>Memory: @order.Product.Info?.Memory</li>
+                        <li>Creation Date: @order.Product.Info?.CreationDate.ToShortDateString()</li>
+                        <li>Life Time: @order.Product.Info?.LifeTime Years</li>
+                        <li>In stock: @order.Product.Info?.Amount</li>
+                        <li>Rating: @order.Product.Info?.Rating</li>
+                    </ul>
+                </div>
+                <div class="amountContainer">
+                    <p>Amount:</p>
+                    <div class="amountContainer__buttons">
+                        <button class="decreaseAmountBtn" type="button" value="@order.Id, @order.Amount"></button>
+                        <input class="amountInput" maxlength="3" value="@order.Amount" data-id="@order.Id" data-amount="@order.Product.Info?.Amount" />
+                        <button class="increaseAmountBtn" type="button" value="@order.Id, @order.Amount, @order.Product.Info?.Amount"></button>
+                    </div>
+                </div>
+                <div class="totalPriceContainer">
+                    <p>Total price:</p>
+                    <p><b><span class="totalPrice">@(order.Product.Price * order.Amount)</span> BYN</b></p>
+                </div>
+                <button type="button" class="btn-close deleteProductFromCartBtn" value="@order.Id" aria-label="Delete"></button>
+            </div>
+            <hr />
+        }
+        <div id="billContainer">
+            <div>
+                <p>Your bill:</p>
+                <p><b><span id="priceResult"></span> BYN</b></p>
+            </div>
+            <button id="getPaymentPartialViewBtn" type="button" class="btn btn-dark">To payment</button>
+        </div>
+    }
+</div>

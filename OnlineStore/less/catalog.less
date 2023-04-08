@@ -1,0 +1,137 @@
+﻿@import "Variables.less";
+
+#catalogContainer {
+    padding: 10px 20px;
+
+    h2 {
+        text-align: center;
+    }
+}
+
+#optionsBlock {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    padding: 0 20px;
+}
+
+#openModalBtn {
+    height: 40px;
+    transition: @transition;
+
+    &:hover{
+        color: @link-hover;
+    }
+}
+
+#productsFilterForm {
+    display: flex;
+    width: 70%;
+    justify-content: space-between;
+    align-items: end;
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #categoryContainer,
+    #availabilityContainer {
+        row-gap: 10px;
+        align-self: start;
+    }
+
+    #availabilityFilter {
+        transform: scale(1.5);
+        cursor: pointer;
+    }
+
+    #clearFilterBtn,
+    #productsFilterBtn {
+        transition: @transition;
+
+        &:hover {
+            color: @link-hover;
+        }
+    }
+}
+
+#cardsContainer {
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px 0;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 1.25%; 
+    row-gap: 30px;
+}
+
+.productCard {
+    width: 19%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+    border: 2px solid @background-container-color;
+    border-radius: 10px;
+
+    .topPart {
+        display: flex;
+        align-items: start;
+
+        img {
+            width: 200px;
+            height: 200px;
+        }
+    }
+
+    .topPart__buttons {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+        margin-top: 5px;
+    }
+
+    .deleteProductBtn {
+        transition: @transition;
+
+        &:hover {
+            filter: invert(60%) sepia(20%) saturate(1063%) hue-rotate(89deg) brightness(85%) contrast(81%);
+        }
+    }
+
+    .getEditPopupBtn {
+        width: 24px;
+        height: 24px;
+        background-color: transparent;
+        background-image: url("../wwwroot/images/edit.svg");
+        background-size: contain;
+        transition: @transition;
+
+        &:hover {
+            filter: invert(60%) sepia(20%) saturate(1063%) hue-rotate(89deg) brightness(85%) contrast(81%);
+        }
+    }
+
+    .name{
+        font-size: 23px;
+    }
+
+    .category,
+    .price {
+        margin-bottom: 10px;
+    }
+
+    .viewProductBtn,
+    .addProductToCartBtn {
+        transition: @transition;
+
+        &:hover {
+            color: @link-hover;
+        }
+    }
+}
+
+#productNotFoundMsg{
+    margin: 100px auto;
+}

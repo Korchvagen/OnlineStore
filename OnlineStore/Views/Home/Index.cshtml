@@ -1,0 +1,25 @@
+﻿@model OnlineStore.BLL.ViewModels.Home.HomeViewModel
+
+@if(Model.Account != null)
+{
+    if(Model.Account.Status == OnlineStore.DAL.Enum.AccountStatus.NotActivated)
+    {
+        <h3 id="activationMessage">Follow the link in the letter that was sent to your email to activate your account</h3>
+    }
+}
+<div id="bannerContainer">
+    <img id="bannerImage" src="data:image/jpeg;base64,@Convert.ToBase64String(Model.Banner.Image)" alt="Banner image" />
+    @if (User.IsInRole("Admin"))
+    {
+        <div id="openeditBannerFromBtn"></div>
+    }
+</div>
+<div id="sliderContainer">
+    <button class="slider-button" disabled id="prevCardBtn"></button>
+    <div id="inner-conteiner">
+        <div id="cards">
+            @await Html.PartialAsync("~/Views/Products/_SliderCard.cshtml", Model.Product)
+        </div>
+    </div>
+    <button class="slider-button" id="nextCardBtn"></button>
+</div>

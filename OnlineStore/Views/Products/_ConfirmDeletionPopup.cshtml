@@ -1,0 +1,29 @@
+﻿@model OnlineStore.DAL.Models.Product
+
+<form id="deletionForm" method="post">
+    <input type="hidden" asp-for="Id" />
+    <p>Are you sure you want to delete <b>@Model.Name</b>?</p>
+    <div id="deletionContainer">
+        <div>
+            <img src="data:image/png;base64,@(Convert.ToBase64String(Model.Image))" />
+        </div>
+        <div>
+            <h4>Characteristics</h4>
+            <ul>
+                <li>Price: @Model.Price</li>
+                <li>Category: @Model.Category</li>
+                <li>Rating: @Model.Info?.Rating</li>
+                <li>Memory: @Model.Info?.Memory</li>
+                <li>Color: @Model.Info?.Color</li>
+                <li>In stock: @Model.Info?.Amount</li>
+                <li>Creation Date: @Model.Info?.CreationDate.ToShortDateString()</li>
+                <li>Material: @Model.Info?.Material</li>
+                <li>Life Time: @Model.Info?.LifeTime Years</li>
+            </ul>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button id="closeModalBtn" type="button" class="btn btn-dark">No</button>
+        <button id="deletionConfirmedBtn" type="button" class="btn btn-dark" value="@Model.Id">Yes</button>
+    </div>
+</form>

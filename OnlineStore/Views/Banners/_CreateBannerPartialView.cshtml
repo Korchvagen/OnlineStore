@@ -1,0 +1,19 @@
+﻿@model OnlineStore.BLL.ViewModels.Banner.CreateBannerViewModel
+
+<div id="createBannerContainer">
+    <form id="createBannerForm">
+        <div class="form-groups">
+            <div class="form-group">
+                <label asp-for="NewImage" class="control-label">New image</label>
+                <input name="NewImage" id="productImage" type="file" asp-for="NewImage" class="form-control" />
+                <span asp-validation-for="NewImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Link" class="control-label"></label>
+                <input id="bannerLink" asp-for="Link" class="form-control" placeholder="/Controller/Action/id?"/>
+                <span asp-validation-for="Link" class="text-danger"></span>
+            </div>
+        </div>
+        <button id="createBannerBtn" class="btn btn-dark">Create</button>
+    </form>
+</div>

@@ -1,0 +1,20 @@
+﻿@model OnlineStore.BLL.ViewModels.Products.FullProductViewModel
+
+<div id="editProductContainer">
+    <div id="editProductFormContainer">
+        @Html.Partial("_EditProductPopupForm", Model.Product)
+    </div>
+    <div id="editProductInfoFormContainer">
+        @Html.Partial("~/Views/ProductsInfo/_EditProductInfoPopupForm.cshtml", Model.ProductInfo)
+    </div>
+</div>
+<div id="closeEditPopupContainer">
+    <button id="closeModalBtn" class="btn btn-dark">Close</button>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
